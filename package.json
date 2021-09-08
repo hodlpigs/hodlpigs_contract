@@ -1,0 +1,29 @@
+{
+  "name": "hodlpigs_contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.1",
+    "ganache": "^6.4.5",
+    "ganache-cli": "^6.12.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "ganache": "ganache-cli",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raid55/hodlpigs_contract.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raid55/hodlpigs_contract/issues"
+  },
+  "homepage": "https://github.com/Raid55/hodlpigs_contract#readme"
+}
