@@ -359,13 +359,13 @@
     "absolutePath": "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol",
     "exportedSymbols": {
       "Address": [
-        1499
+        1868
       ],
       "Context": [
-        1521
+        1890
       ],
       "ERC165": [
-        1748
+        2117
       ],
       "ERC721": [
         1011
@@ -374,19 +374,19 @@
         1175
       ],
       "IERC165": [
-        1760
+        2129
       ],
       "IERC721": [
         1127
       ],
       "IERC721Metadata": [
-        1202
+        1571
       ],
       "IERC721Receiver": [
         1145
       ],
       "Strings": [
-        1724
+        2093
       ]
     },
     "id": 1176,
@@ -423,7 +423,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1176,
-        "sourceUnit": 1522,
+        "sourceUnit": 1891,
         "src": "82:36:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -436,7 +436,7 @@
               "id": 1151,
               "name": "Context",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1521,
+              "referencedDeclaration": 1890,
               "src": "262:7:5"
             },
             "id": 1152,
@@ -459,10 +459,10 @@
         "contractDependencies": [
           1011,
           1127,
-          1202,
-          1521,
-          1748,
-          1760
+          1571,
+          1890,
+          2117,
+          2129
         ],
         "contractKind": "contract",
         "documentation": {
@@ -476,11 +476,11 @@
         "linearizedBaseContracts": [
           1175,
           1011,
-          1202,
+          1571,
           1127,
-          1748,
-          1760,
-          1521
+          2117,
+          2129,
+          1890
         ],
         "name": "ERC721Burnable",
         "nameLocation": "244:14:5",
@@ -505,7 +505,7 @@
                               "name": "_msgSender",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1511,
+                              "referencedDeclaration": 1880,
                               "src": "586:10:5",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -764,13 +764,13 @@
     "absolutePath": "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol",
     "exportedSymbols": {
       "Address": [
-        1499
+        1868
       ],
       "Context": [
-        1521
+        1890
       ],
       "ERC165": [
-        1748
+        2117
       ],
       "ERC721": [
         1011
@@ -779,19 +779,19 @@
         1175
       ],
       "IERC165": [
-        1760
+        2129
       ],
       "IERC721": [
         1127
       ],
       "IERC721Metadata": [
-        1202
+        1571
       ],
       "IERC721Receiver": [
         1145
       ],
       "Strings": [
-        1724
+        2093
       ]
     },
     "id": 1176,
@@ -828,7 +828,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1176,
-        "sourceUnit": 1522,
+        "sourceUnit": 1891,
         "src": "82:36:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -841,7 +841,7 @@
               "id": 1151,
               "name": "Context",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1521,
+              "referencedDeclaration": 1890,
               "src": "262:7:5"
             },
             "id": 1152,
@@ -864,10 +864,10 @@
         "contractDependencies": [
           1011,
           1127,
-          1202,
-          1521,
-          1748,
-          1760
+          1571,
+          1890,
+          2117,
+          2129
         ],
         "contractKind": "contract",
         "documentation": {
@@ -881,11 +881,11 @@
         "linearizedBaseContracts": [
           1175,
           1011,
-          1202,
+          1571,
           1127,
-          1748,
-          1760,
-          1521
+          2117,
+          2129,
+          1890
         ],
         "name": "ERC721Burnable",
         "nameLocation": "244:14:5",
@@ -910,7 +910,7 @@
                               "name": "_msgSender",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1511,
+                              "referencedDeclaration": 1880,
                               "src": "586:10:5",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -1171,7 +1171,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-09-08T04:31:17.485Z",
+  "updatedAt": "2021-09-08T09:33:11.312Z",
   "devdoc": {
     "details": "ERC721 Token that can be irreversibly burned (destroyed).",
     "kind": "dev",
