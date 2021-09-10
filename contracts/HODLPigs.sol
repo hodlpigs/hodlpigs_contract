@@ -59,7 +59,7 @@ contract HODLPigs is
 
     function deposit(uint256 tokenId) public payable {
         // require that the sender owns the token
-        require(ownerOf(tokenId) == msg.sender);
+        // require(ownerOf(tokenId) == msg.sender);
         ledger[tokenId] += msg.value;
         emit Deposit(msg.sender, tokenId, msg.value);
     }
