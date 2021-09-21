@@ -4,26 +4,20 @@ pragma solidity ^0.8.2;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract HODLPigs is
-    ERC721,
-    Pausable,
-    Ownable,
-    ERC721Burnable,
-    ERC721Enumerable
-{
-    // Total ledger (from deposits)
+contract Pigs is ERC721, Pausable, Ownable, ERC721Enumerable {
+    using SafeMath for uint256;
+    // Total ledger (from deposits, PigId -> eth)
     mapping(uint256 => uint256) public ledger;
-    // Total sales (for withdraw
-    uint256 public saleLedger = 0;
+    uint256 public totalLedger;
     // Price per pig
-    uint256 public constant pigPrice = 25000000000000000; //0.025
+    uint256 public constant pigPrice = 0.001 ether; //0.001
     // Max pig purchased in one Tx
     uint256 public constant maxPerTx = 20;
     // Max Pig supply
-    uint256 public constant pigSupply = 30;
+    uint256 public constant ORIGINAL_PIG_SUPPLY = 2000;
 
     uint256 public mintIdx = 0;
 
@@ -35,14 +29,17 @@ contract HODLPigs is
         uint256 value
     );
 
-    constructor() ERC721("HODLPIGS", "HDPIG") {
+    constructor() ERC721("TESTPIGS", "TESTPIG") {
+        reservePigs();
         pause();
     }
 
-    function withdraw() public onlyOwner {
-        uint256 balance = saleLedger;
-        saleLedger = 0;
-        payable(msg.sender).transfer(balance);
+    function drain() public onlyOwner {
+        uint256 drainable = address(this).balance;
+
+        drainable = drainable.sub(totalLedger);
+
+        payable(msg.sender).transfer(drainable);
     }
 
     function pause() public onlyOwner {
@@ -53,45 +50,59 @@ contract HODLPigs is
         _unpause();
     }
 
-    function safeMint(address to, uint256 tokenId) public onlyOwner {
-        _safeMint(to, tokenId);
-    }
-
     function deposit(uint256 tokenId) public payable {
-        // require that the sender owns the token
-        // require(ownerOf(tokenId) == msg.sender);
-        ledger[tokenId] += msg.value;
+        //check if pig exists
+        require(_exists(tokenId), "Pig has been cracked or is not minted");
+
+        ledger[tokenId] = ledger[tokenId].add(msg.value);
+        totalLedger = totalLedger.add(msg.value);
         emit Deposit(msg.sender, tokenId, msg.value);
     }
 
     function crackPig(uint256 tokenId) public {
         // require that the sender owns the token
-        require(ownerOf(tokenId) == msg.sender);
+        require(
+            ownerOf(tokenId) == msg.sender,
+            "Only owner can crack open a pig"
+        );
+        require(ledger[tokenId] > 0, "Pig is empty");
 
         uint256 balance = ledger[tokenId];
         ledger[tokenId] = 0;
+        totalLedger = totalLedger.sub(balance);
+        
 
         // effect
-        burn(tokenId);
+        _burn(tokenId);
         payable(msg.sender).transfer(balance);
         emit Cracked(msg.sender, tokenId, balance);
     }
 
     function mintPig(uint256 numberOfTokens) public payable whenNotPaused {
-        require(numberOfTokens <= maxPerTx, "Max of 20 Tokens");
+        require(numberOfTokens <= maxPerTx, "Max of 10 tokens per transaction");
         require(
-            mintIdx + numberOfTokens <= pigSupply,
-            "Purchase would exceed supply"
+            mintIdx + numberOfTokens <= ORIGINAL_PIG_SUPPLY,
+            "Purchase would exceed max supply"
         );
-        require(msg.value >= numberOfTokens * pigPrice, "Insuficient Ether");
+        require(
+            msg.value >= numberOfTokens * pigPrice,
+            "Insuficient Ether Provided"
+        );
 
         for (uint256 i = 0; i < numberOfTokens; i++) {
-            uint256 mintIdx = totalSupply();
-            if (mintIdx < pigSupply) {
+            if (mintIdx < ORIGINAL_PIG_SUPPLY) {
                 _safeMint(msg.sender, mintIdx);
-                mintIdx += 2;
-                saleLedger += pigPrice;
+                mintIdx += 1;
             }
+        }
+    }
+
+    function reservePigs() public onlyOwner {
+        require(mintIdx == 0, "can only reserve first 30 pigs");
+
+        for (uint256 i = 0; i < 30; i++) {
+            _safeMint(msg.sender, mintIdx);
+            mintIdx += 1;
         }
     }
 
