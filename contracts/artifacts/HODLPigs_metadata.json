@@ -1016,11 +1016,11 @@
 			]
 		},
 		"contracts/HODLPigs.sol": {
-			"keccak256": "0x490f09cd920f0275276d900e775b43a6704c8b56938f1e7536ab7bcd26d18aad",
+			"keccak256": "0x4161fb2fddda23b3fb73de9f468ed38e049267231fe063ac1f55530cf6bfe3c3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d8b3b7ef55a4ab126ea245d19b60eba2d19849d80e73f2dd055adad4bfe54b61",
-				"dweb:/ipfs/QmRC4MVC49Hnx9BD8GMqXQit3qgowVWQfVC2Z81jNVxKrt"
+				"bzz-raw://e636eb26b730589a5e161774ce75735aff853bb51c0cd4f3e0972684011a4629",
+				"dweb:/ipfs/QmRtCgWn3ZNiUKuK4xYGFeJzmbwY5MiRK6z3YdfnqXG69i"
 			]
 		}
 	},

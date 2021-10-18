@@ -25,7 +25,7 @@ contract HODLPigs is ERC721, Pausable, Ownable, ERC721Enumerable {
     uint256 public constant ORIGINAL_SUPPLY = 10000;
     // timestamp when the index should get set
     // if token did not sell out by then
-    uint256 public constant REVEAL_TIMESTAMP = 1634864400;
+    uint256 public constant REVEAL_TIMESTAMP = 1635145200;
     // a hash of all the images hashed in it's
     // original generated sequence
     string public provenance = "75804417186d360a948d7734e3273fd210c60a3968ff9a83201439d9deb11270";
